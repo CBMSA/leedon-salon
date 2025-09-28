@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bloom & Co. Salon — Book Online</title>
+  <meta name="description" content="Bloom & Co. — Modern salon. Book haircuts, coloring, and treatments online." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fffaf6; --accent:#b76b6b; --muted:#6b6b6b; --card:#ffffff;
+      --radius:14px; --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Montserrat, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222; background:linear-gradient(180deg,var(--bg),#fff); -webkit-font-smoothing:antialiased}
+
+    .container{max-width:var(--max-width); margin:32px auto; padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#f0a6a6);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Playfair Display';box-shadow:0 6px 18px rgba(183,107,107,0.15)}
+    nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .hero .eyebrow{color:var(--accent);font-weight:700}
+    .hero h1{font-family:'Playfair Display';font-size:34px;margin:8px 0}
+    .hero p{color:var(--muted);line-height:1.5}
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{background:var(--accent);color:white;padding:12px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(30,30,30,0.06)}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .service{padding:18px;border-radius:12px}
+    .service h3{margin:8px 0 6px}
+    .service p{color:var(--muted);font-size:14px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+
+    /* Team */
+    .team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .member{display:flex;gap:12px;align-items:center}
+    .avatar{width:72px;height:72px;border-radius:10px;flex-shrink:0;object-fit:cover}
+
+    footer{margin-top:32px;padding:18px;text-align:center;color:var(--muted)}
+
+    /* Booking form modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(10,10,10,0.45);display:none;align-items:center;justify-content:center;padding:18px}
+    .modal{width:100%;max-width:520px;background:white;padding:20px;border-radius:12px}
+    .modal h2{margin:0 0 6px}
+    .form-row{display:flex;gap:8px;margin-top:12px}
+    label{font-size:13px;color:var(--muted)}
+    input,input[type=date],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #eee;margin-top:6px}
+    .small{font-size:13px;color:#8b8b8b}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .team{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      nav a{display:none}
+      .services{grid-template-columns:1fr}
+      .team{grid-template-columns:1fr}
+      .gallery img{height:100px}
+      .logo{width:48px;height:48px}
+      .hero h1{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">B&amp;Co</div>
+        <div>
+          <div style="font-weight:700">Bloom &amp; Co.</div>
+          <div style="font-size:13px;color:var(--muted)">Modern Salon — City centre</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Feel beautiful today</div>
+          <h1>Expert stylists. Natural products. Relaxed vibes.</h1>
+          <p>Welcome to Bloom &amp; Co. — Our experienced team offers haircuts, coloring, and nourishing treatments. Book online in seconds and receive a confirmation email.</p>
+          <div class="cta">
+            <button class="btn" id="openBooking">Book Now</button>
+            <a class="btn secondary" href="#gallery">See Our Work</a>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:18px">
+            <div class="card" style="min-width:210px">
+              <div style="font-weight:700">Opening Hours</div>
+              <div class="small">Mon–Fri 9:00–18:00<br>Sat 9:00–15:00</div>
+            </div>
+            <div class="card" style="min-width:210px">
+              <div style="font-weight:700">Contact</div>
+              <div class="small">+27 82 000 0000<br><a href="mailto:hello@bloomco.example">hello@bloomco.example</a></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <div style="font-weight:700;margin-bottom:10px">Quick Price Guide</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px"><div>Haircut (Short)</div><div>R250</div></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px"><div>Full Colour</div><div>R950</div></div>
+          <div style="display:flex;justify-content:space-between"><div>Treatment</div><div>R420</div></div>
+          <div class="note">Deposits available at checkout (Stripe/PayFast integration supported).</div>
+        </aside>
+      </section>
+
+      <section id="services" class="card" style="margin-top:28px">
+        <h2 style="margin:0 0 8px">Services</h2>
+        <div class="services">
+          <div class="service"><h3>Women's Haircut</h3><p>Precision cuts tailored to your look. Includes shampoo and blow-dry.</p></div>
+          <div class="service"><h3>Men's Haircut</h3><p>Modern and classic men's styles with a skin-safe finish.</p></div>
+          <div class="service"><h3>Color &amp; Highlights</h3><p>Balayage, full colour and toning using cruelty-free products.</p></div>
+          <div class="service"><h3>Treatments</h3><p>Deep-conditioning and scalp treatments for all hair types.</p></div>
+          <div class="service"><h3>Styling</h3><p>Event styling, braids, curl sets and blowouts.</p></div>
+          <div class="service"><h3>Kids</h3><p>Fun, friendly cuts for little ones — quick and painless.</p></div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h2 style="margin-top:22px">Gallery</h2>
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=60" alt="style1">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=60" alt="style2">
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55a32?auto=format&fit=crop&w=800&q=60" alt="style3">
+          <img src="https://images.unsplash.com/photo-1520975917176-1d18f2b7a5b6?auto=format&fit=crop&w=800&q=60" alt="style4">
+        </div>
+      </section>
+
+      <section id="team" class="card" style="margin-top:18px">
+        <h2>Meet the Team</h2>
+        <div class="team">
+          <div class="member"><img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60" alt="stylist"><div><strong>Lena M.</strong><div class="small">Colour Specialist</div></div></div>
+          <div class="member"><img class="avatar" src="https://images.unsplash.com/photo-1545996124-1b8a7b3d3f98?auto=format&fit=crop&w=400&q=60" alt="stylist"><div><strong>Sam K.</strong><div class="small">Cutting & Styling</div></div></div>
+          <div class="member"><img class="avatar" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=60" alt="stylist"><div><strong>Maya R.</strong><div class="small">Treatments</div></div></div>
+        </div>
+      </section>
+
+      <section id="contact" class="card" style="margin-top:18px">
+        <h2>Contact &amp; Location</h2>
+        <p class="small">123 Salon Street, City Centre — <a href="https://maps.google.com" target="_blank">Open in maps</a></p>
+        <p class="small">Phone: +27 82 000 0000 — Email: <a href="mailto:hello@bloomco.example">hello@bloomco.example</a></p>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Bloom &amp; Co. — Built with ❤️
+      </footer>
+    </main>
+  </div>
+
+  <!-- Booking modal -->
+  <div class="modal-backdrop" id="backdrop" aria-hidden="true">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Book an Appointment</h2>
+      <p class="small">Quick booking — we will confirm by email or phone.</p>
+      <form id="bookingForm">
+        <div style="margin-top:12px">
+          <label>Name <input type="text" name="name" id="name" placeholder="Your full name" required></label>
+        </div>
+        <div class="form-row">
+          <div style="flex:1"><label>Phone <input type="tel" id="phone" name="phone" placeholder="+27 82 ..." required></label></div>
+          <div style="flex:1"><label>Email <input type="email" id="email" name="email" placeholder="you@example.com"></label></div>
+        </div>
+        <div class="form-row">
+          <div style="flex:1"><label>Service
+            <select id="service" required>
+              <option value="">Choose a service</option>
+              <option>Women's Haircut</option>
+              <option>Men's Haircut</option>
+              <option>Color & Highlights</option>
+              <option>Treatment</option>
+            </select>
+          </label></div>
+          <div style="flex:1"><label>Date <input type="date" id="date" required></label></div>
+        </div>
+        <div style="margin-top:8px"><label>Notes <textarea id="notes" rows="2" placeholder="Any preferences or allergies"></textarea></label></div>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+          <button type="button" class="btn secondary" id="cancelBooking">Cancel</button>
+          <button class="btn" type="submit">Request Booking</button>
+        </div>
+        <div class="note" id="feedback" style="display:none;margin-top:8px"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // small UI behaviour
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const backdrop = document.getElementById('backdrop');
+    const openBtn = document.getElementById('openBooking');
+    const cancelBtn = document.getElementById('cancelBooking');
+    const form = document.getElementById('bookingForm');
+    const feedback = document.getElementById('feedback');
+
+    openBtn.addEventListener('click', ()=>{ backdrop.style.display='flex'; backdrop.setAttribute('aria-hidden','false'); document.getElementById('name').focus();});
+    cancelBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e)=>{ if(e.target===backdrop) closeModal(); });
+
+    function closeModal(){ backdrop.style.display='none'; backdrop.setAttribute('aria-hidden','true'); feedback.style.display='none'; form.reset(); }
+
+    // Basic client-side booking handler (placeholder — replace with API call)
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        service: document.getElementById('service').value,
+        date: document.getElementById('date').value,
+        notes: document.getElementById('notes').value.trim(),
+        created: new Date().toISOString()
+      };
+
+      // Basic validation
+      if(!data.name || !data.phone || !data.service || !data.date){
+        feedback.style.display='block'; feedback.style.color='crimson'; feedback.textContent='Please fill in all required fields.'; return;
+      }
+
+      // Store locally for demo (replace with POST to your backend)
+      let bookings = [];
+      try{ bookings = JSON.parse(localStorage.getItem('demo_bookings')||'[]'); }catch(e){ bookings=[] }
+      bookings.push(data);
+      localStorage.setItem('demo_bookings', JSON.stringify(bookings));
+
+      // Provide a fallback mailto so small salons can receive bookings by email without a backend
+      const subject = encodeURIComponent('Booking request — ' + data.service + ' — ' + data.name);
+      const body = encodeURIComponent('Name: '+data.name+'\nPhone: '+data.phone+'\nEmail: '+data.email+'\nService: '+data.service+'\nDate: '+data.date+'\nNotes: '+data.notes);
+      // attempt to open mail client (user can choose not to)
+      window.location.href = 'mailto:hello@bloomco.example?subject='+subject+'&body='+body;
+
+      feedback.style.display='block'; feedback.style.color='green'; feedback.textContent='Booking saved locally and mail client opened. We recommend connecting a real backend for confirmations.';
+
+      setTimeout(()=>{ closeModal(); },2000);
+    });
+
+    // accessibility: close on escape
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+  </script>
+</body>
+</html>
+
+
+Done — I created a complete, responsive HTML/CSS single-file site in the canvas titled Salon-website-index (file: salon-website-index.html). It includes:
+
+Hero, Services, Gallery, Team, Contact sections
+
+A responsive design that works on mobile and desktop
+
+A working booking modal (client-side, saves to localStorage and opens the user's mail client as a fallback)
+
+Clean, production-friendly markup and accessibility touches
+
+
+Next steps & quick deployment guide
+
+1. Add the file to your GitHub repo as index.html at the repository root.
+
+
+2. Enable GitHub Pages: Settings → Pages → Source: main branch / / (root) — the site will publish at https://<your-username>.github.io/<repo> or, for a repo named <your-username>.github.io, at the root.
+
+
+3. When you purchase your domain on GoDaddy: in GoDaddy's DNS settings create a CNAME or A records to point the domain to GitHub Pages (or use the custom domain settings in the repo's Pages section). GitHub docs walk through exact steps.
+
+
+4. To accept real bookings and payments: replace the client-side booking handler with a POST to a backend (Express, Firebase Functions, or a serverless function on Vercel/Netlify). For South Africa payments, integrate PayFast or Stripe for deposits. If you want, I can provide the exact Node.js (Express) endpoint and Stripe/PayFast integration next.
+
+
+
+Would you like:
+
+I) a ready-to-drop Node.js + Express backend snippet (booking endpoint + email confirmation), or
+
+II) instructions to deploy this as a static site on Vercel/Netlify and hook a serverless function for bookings?
+
+
+Pick one and I’ll add it right away.
+
