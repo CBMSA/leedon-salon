@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bloom & Co. Salon — Book Online</title>
-  <meta name="description" content="Bloom & Co. — Modern salon. Book haircuts, coloring, and treatments online." />
+  <title>Leendon Salon — Book Online</title>
+  <meta name="description" content="Leendon — Modern salon. Book haircuts, coloring, and treatments online." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -99,7 +99,7 @@
         <div>
           <div class="eyebrow">Feel beautiful today</div>
           <h1>Expert stylists. Natural products. Relaxed vibes.</h1>
-          <p>Welcome to Bloom &amp; Co. — Our experienced team offers haircuts, coloring, and nourishing treatments. Book online in seconds and receive a confirmation email.</p>
+          <p>Welcome to Leendon Salon— Our experienced team offers haircuts, coloring, and nourishing treatments. Book online in seconds and receive a confirmation email.</p>
           <div class="cta">
             <button class="btn" id="openBooking">Book Now</button>
             <a class="btn secondary" href="#gallery">See Our Work</a>
@@ -160,11 +160,11 @@
       <section id="contact" class="card" style="margin-top:18px">
         <h2>Contact &amp; Location</h2>
         <p class="small">123 Salon Street, City Centre — <a href="https://maps.google.com" target="_blank">Open in maps</a></p>
-        <p class="small">Phone: +27 82 000 0000 — Email: <a href="mailto:hello@bloomco.example">hello@bloomco.example</a></p>
+        <p class="small">Phone: +27 82 000 0000 — Email: <a href="mailto:hello@bloomco.example">hello@leendonsalon.co.za</a></p>
       </section>
 
       <footer>
-        © <span id="year"></span> Bloom &amp; Co. — Built with ❤️
+        © <span id="year"></span> Leendon Salon— Built with ❤️
       </footer>
     </main>
   </div>
@@ -247,7 +247,7 @@
       const subject = encodeURIComponent('Booking request — ' + data.service + ' — ' + data.name);
       const body = encodeURIComponent('Name: '+data.name+'\nPhone: '+data.phone+'\nEmail: '+data.email+'\nService: '+data.service+'\nDate: '+data.date+'\nNotes: '+data.notes);
       // attempt to open mail client (user can choose not to)
-      window.location.href = 'mailto:hello@bloomco.example?subject='+subject+'&body='+body;
+      window.location.href = 'mailto:hello@leedonsalon.co.za?subject='+subject+'&body='+body;
 
       feedback.style.display='block'; feedback.style.color='green'; feedback.textContent='Booking saved locally and mail client opened. We recommend connecting a real backend for confirmations.';
 
@@ -261,38 +261,4 @@
 </html>
 
 
-Done — I created a complete, responsive HTML/CSS single-file site in the canvas titled Salon-website-index (file: salon-website-index.html). It includes:
-
-Hero, Services, Gallery, Team, Contact sections
-
-A responsive design that works on mobile and desktop
-
-A working booking modal (client-side, saves to localStorage and opens the user's mail client as a fallback)
-
-Clean, production-friendly markup and accessibility touches
-
-
-Next steps & quick deployment guide
-
-1. Add the file to your GitHub repo as index.html at the repository root.
-
-
-2. Enable GitHub Pages: Settings → Pages → Source: main branch / / (root) — the site will publish at https://<your-username>.github.io/<repo> or, for a repo named <your-username>.github.io, at the root.
-
-
-3. When you purchase your domain on GoDaddy: in GoDaddy's DNS settings create a CNAME or A records to point the domain to GitHub Pages (or use the custom domain settings in the repo's Pages section). GitHub docs walk through exact steps.
-
-
-4. To accept real bookings and payments: replace the client-side booking handler with a POST to a backend (Express, Firebase Functions, or a serverless function on Vercel/Netlify). For South Africa payments, integrate PayFast or Stripe for deposits. If you want, I can provide the exact Node.js (Express) endpoint and Stripe/PayFast integration next.
-
-
-
-Would you like:
-
-I) a ready-to-drop Node.js + Express backend snippet (booking endpoint + email confirmation), or
-
-II) instructions to deploy this as a static site on Vercel/Netlify and hook a serverless function for bookings?
-
-
-Pick one and I’ll add it right away.
 
